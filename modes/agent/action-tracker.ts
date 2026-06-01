@@ -23,11 +23,22 @@ export class ActionTracker{
         return action;
     }
 
-    getActions(){}
+    getActions():readonly ActionLog[]{
+        return this.actions
+    }
 
-    getpendingMutations(){}
+    getpendingMutations(): ActionLog[]{
+        return this.actions.filter(
+            (a)=> isMutationType(a.type) && a.status === 'pending'
+        )
+    }
 
-    updateStatus(){}
+    updateStatus(id: string, status: ActionStatus, userApproved?: boolean):void{
+        const a = this.actions.find((x) => x.id === id)
+        if(!a) return;
+        a.status = status;
+        if (userApproved !== undefined) a.userApproved = userApproved
+    }
 
 
 }
