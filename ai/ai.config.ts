@@ -7,7 +7,7 @@ export function getAgentModel(){
   const modelId = process.env.OPENROUTER_DEFAULT_MODE
   
   if (!modelId) {
-    throw new Error("OPENROUTER_DEFAULT_MODEL environment variable is not set")
+    throw new Error("OPENROUTER_DEFAULT_MODE environment variable is not set")
   }
   
   return provider(modelId)

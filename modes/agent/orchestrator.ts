@@ -24,19 +24,30 @@ export async function runAgentMode() {
   const executor = new ToolExecutor(tracker, config);
   const tools = createAgentTools(executor);
 
+  let steps = 0
   const agent = new ToolLoopAgent({
     model: getAgentModel(),
-    stopWhen: stepCountIs(40),
+    stopWhen: stepCountIs(10),
     instructions: [
       `workspace root: ${config.codebasePath}`,
       "All mutations are staged until approval",
     ].join("\n"),
     tools,
+    onStepFinish(){
+        steps++;
+        console.log(`Step${steps}`)
+    }
   });
 
+  let stepNumber = 0;
   const result = await agent.generate({
     prompt: goal.trim(),
     onStepFinish: ({ toolCalls }) => {
+      stepNumber++;
+
+      console.log(chalk.yellow(`\n==== STEP ${stepNumber}`));
+
+      console.log(chalk.cyan(`Tool calls: ${toolCalls.length}`));
       for (const tc of toolCalls) {
         const preview = JSON.stringify(tc.input).slice(0, 160);
         console.log(
@@ -45,6 +56,7 @@ export async function runAgentMode() {
           chalk.dim(preview + (preview.length >= 160 ? "..." : " ")),
         );
       }
+      console.log(chalk.gray(`Assistant text length: ${text?.length ?? 0}`));
     },
   });
 
@@ -61,5 +73,5 @@ export async function runAgentMode() {
   } else {
     console.log(chalk.green("\n Applied \n"));
   }
-   executor.clearStaging()
+  executor.clearStaging();
 }
