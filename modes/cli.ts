@@ -24,7 +24,7 @@ export async function runCliMode(){
             console.log('Plan')
         }
         if(mode === 'ask'){
-            await runAskMode
+            await runAskMode()
         }
 
         if(mode !== 'agent' && mode!== 'plan' && mode!== 'ask'){
