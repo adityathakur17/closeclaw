@@ -21,7 +21,13 @@ close-claw is a TypeScript-powered AI assistant framework for local CLI usage an
 ## Install prerequisites
 
 1. Install Bun: https://bun.sh
-2. Clone this repository.
+2. Clone this repository:
+
+```bash
+git clone https://github.com/yourname/close-claw.git
+cd close-claw
+```
+
 3. Install dependencies:
 
 ```bash
