@@ -24,7 +24,7 @@ close-claw is a TypeScript-powered AI assistant framework for local CLI usage an
 2. Clone this repository:
 
 ```bash
-git clone https://github.com/yourname/close-claw.git
+git clone https://github.com/adityathakur17/closeclaw.git
 cd close-claw
 ```
 
