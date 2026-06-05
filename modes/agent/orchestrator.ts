@@ -39,13 +39,11 @@ export async function runAgentMode() {
     }
   });
 
-  let stepNumber = 0;
+  
   const result = await agent.generate({
     prompt: goal.trim(),
     onStepFinish: ({ toolCalls }) => {
-      stepNumber++;
 
-      console.log(chalk.yellow(`\n==== STEP ${stepNumber}`));
 
       console.log(chalk.cyan(`Tool calls: ${toolCalls.length}`));
       for (const tc of toolCalls) {
@@ -56,7 +54,6 @@ export async function runAgentMode() {
           chalk.dim(preview + (preview.length >= 160 ? "..." : " ")),
         );
       }
-      console.log(chalk.gray(`Assistant text length: ${text?.length ?? 0}`));
     },
   });
 
