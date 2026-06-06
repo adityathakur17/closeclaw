@@ -1,6 +1,6 @@
-# close-claw
+# closeclaw
 
-close-claw is a TypeScript-powered AI assistant framework for local CLI usage and Telegram bot interaction. It lets you ask questions, generate structured plans, and run agent-driven workflows with AI tooling powered through OpenRouter and optional web tools.
+closeclaw is a TypeScript-powered AI assistant framework for local CLI usage and Telegram bot interaction. It lets you ask questions, generate structured plans, and run agent-driven workflows with AI tooling powered through OpenRouter and optional web tools.
 
 ## What this project does
 
@@ -25,7 +25,7 @@ close-claw is a TypeScript-powered AI assistant framework for local CLI usage an
 
 ```bash
 git clone https://github.com/adityathakur17/closeclaw.git
-cd close-claw
+cd closeclaw
 ```
 
 3. Install dependencies:
